@@ -21,9 +21,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AIvance Academy — 2-Day AI Specialist Starter Bootcamp",
+  title: "AIvanza Academy — 2-Day AI Specialist Starter Bootcamp",
   description:
-    "Advance your future with practical AI skills. Join the AIvance Academy 2-Day AI Specialist Starter Bootcamp — beginner-friendly, practical outputs, business & career ready.",
+    "Advance your future with practical AI skills. Join the AIvanza Academy 2-Day AI Specialist Starter Bootcamp — beginner-friendly, practical outputs, business & career ready.",
 };
 
 export default function RootLayout({

@@ -11,6 +11,9 @@ import Pricing from "@/components/Pricing";
 import FinalCta from "@/components/FinalCta";
 import Footer from "@/components/Footer";
 
+/** Refresh seat counts periodically without full static freeze. */
+export const revalidate = 30;
+
 export default function Home() {
   return (
     <>

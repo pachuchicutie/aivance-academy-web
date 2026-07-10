@@ -27,7 +27,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="foot-base">
-          <span>© 2026 AIVANCE ACADEMY</span>
+          <span>© 2026 AIVANZA ACADEMY</span>
           <span>LEARN · BUILD · ADVANCE</span>
         </div>
       </div>

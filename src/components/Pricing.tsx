@@ -9,7 +9,7 @@ export default function Pricing() {
           <span className="eyebrow">Enrollment</span>
           <h2>Start Learning AI for Only ₱1,999</h2>
           <p>
-            Join the AIvance Academy 2-Day AI Specialist Starter Bootcamp and
+            Join the AIvanza Academy 2-Day AI Specialist Starter Bootcamp and
             gain practical AI skills for business, career growth, portfolio
             building, and everyday productivity.
           </p>

@@ -2,8 +2,12 @@ import HeroParticles from "./HeroParticles";
 import HeroVideo from "./HeroVideo";
 import SeatMeter from "./SeatMeter";
 import { IconCalendar, IconUsers } from "./Icons";
+import { formatSeatLine, getBatchSeatStatus } from "@/lib/seats";
 
-export default function Hero() {
+export default async function Hero() {
+  const seats = await getBatchSeatStatus();
+  const batch1 = seats.batches["1"];
+
   return (
     <section className="hero" id="home">
       <svg
@@ -38,7 +42,7 @@ export default function Hero() {
             Advance Your Future with <em>Practical AI Skills</em>
           </h1>
           <p className="hero-sub">
-            AIvance Academy helps Filipinos learn how to use AI tools,
+            AIvanza Academy helps Filipinos learn how to use AI tools,
             automation, landing pages, sales trackers, and business workflows
             for business, career growth, portfolio building, and everyday
             productivity.
@@ -84,18 +88,20 @@ export default function Hero() {
             <div className="qi-row">
               <IconUsers />
               <span>
-                <b>25 seats per batch only</b>
+                <b>{seats.seatLimit} seats per batch only</b>
               </span>
             </div>
             <div className="qi-seats">
               <div className="mono-line">
                 <span>BATCH 1 SEAT STATUS</span>
-                <b>2 / 25 filled</b>
+                <b>
+                  {batch1.filled} / {batch1.seatLimit} filled
+                </b>
               </div>
-              <SeatMeter filled={2} />
+              <SeatMeter filled={batch1.filled} total={batch1.seatLimit} />
               <p className="qi-note">
-                Small batch size to ensure all students are properly
-                accommodated.
+                Live seat count · {formatSeatLine(batch1)}. Small batch size so
+                every student is properly accommodated.
               </p>
             </div>
           </aside>

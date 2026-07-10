@@ -12,7 +12,7 @@ export default function Challenge() {
           </h2>
           <p>
             Many people want to use AI but feel overwhelmed by too many tools,
-            technical terms, and scattered tutorials. AIvance Academy simplifies
+            technical terms, and scattered tutorials. AIvanza Academy simplifies
             the learning path by teaching AI step by step and focusing on
             practical outputs.
           </p>

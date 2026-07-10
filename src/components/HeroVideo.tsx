@@ -22,7 +22,7 @@ export default function HeroVideo() {
       <img
         className="poster"
         src="/hero-poster.jpg"
-        alt="AIvance Academy logo hovering above a glowing futuristic platform"
+        alt="AIvanza Academy logo hovering above a glowing futuristic platform"
       />
       <video
         ref={videoRef}
@@ -37,7 +37,7 @@ export default function HeroVideo() {
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
       <span className="holo-tag">
-        AIvance&nbsp;//&nbsp;Learn&nbsp;·&nbsp;Build&nbsp;·&nbsp;Advance
+        AIvanza&nbsp;//&nbsp;Learn&nbsp;·&nbsp;Build&nbsp;·&nbsp;Advance
       </span>
     </div>
   );
