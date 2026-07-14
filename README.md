@@ -62,13 +62,21 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 
 ### Database migration (required for live submit)
 
-Apply `supabase/migrations/202607100002_guest_payment_proofs.sql` to the shared Supabase project (SQL editor or CLI). It:
+Apply these SQL files to the shared Supabase project (SQL Editor → Run), in order:
 
-- Extends `payments` for guest fields (`full_name`, `email`, `contact_number`, `batch`, nullable `user_id`)
-- Allows public read of active `payment_methods`
-- Adds `payment-proofs` storage bucket for receipt images
-- Adds `submit_guest_payment_proof()` RPC (always inserts `status = pending`, tier `basic`)
-- Updates `confirm_payment` so guest rows (no `user_id`) confirm without auto-enrolling
+1. `supabase/migrations/202607100002_guest_payment_proofs.sql` — guest columns, storage, base RPC  
+2. `supabase/migrations/202607140001_ensure_guest_payment_identity.sql` — full name / email always saved  
+3. `supabase/migrations/202607140002_block_duplicate_guest_payment_email.sql` — block re-submit with same email when pending/confirmed or account exists
+
+They:
+
+- Extend `payments` for guest fields (`full_name`, `email`, `contact_number`, `batch`, nullable `user_id`)
+- Allow public read of active `payment_methods`
+- Add `payment-proofs` storage bucket for receipt images
+- Add / harden `submit_guest_payment_proof()` (always `status = pending`, tier `basic`, persists `full_name` + `email`)
+- Update `confirm_payment` so guest rows (no `user_id`) confirm without auto-enrolling
+
+After submit, check **Table Editor → payments → full_name / email** (not `profiles.full_name` — guests have no account yet).
 
 Add payment methods in the admin portal so the payment page has channels to display.
 

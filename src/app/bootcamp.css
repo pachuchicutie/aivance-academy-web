@@ -411,6 +411,17 @@ footer{
 }
 .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap}
 .foot-brand p{color:var(--muted);font-size:.88rem;margin-top:.5rem}
+.foot-social{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  margin-top:.85rem;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:.88rem;
+  transition:color .2s;
+}
+.foot-social:hover{color:var(--glow)}
 .foot-links{display:flex;gap:1.6rem;list-style:none;flex-wrap:wrap}
 .foot-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
 .foot-links a:hover{color:var(--glow)}
@@ -1343,4 +1354,32 @@ footer{
 }
 @media (max-width:480px){
   .pay-form-meta{grid-template-columns:1fr}
+}
+
+
+/* ---------- auth confirm (invite links) ---------- */
+.auth-confirm-page{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:2rem 1rem;
+  background:radial-gradient(circle at top, rgba(24,216,255,.08), transparent 40%), #05070f;
+}
+.auth-confirm-card{
+  width:min(480px,100%);
+  border:1px solid rgba(120,160,255,.16);
+  border-radius:16px;
+  background:rgba(8,14,28,.92);
+  padding:2rem 1.5rem;
+  text-align:center;
+}
+.auth-confirm-card h1{
+  margin:0.75rem 0 0.75rem;
+  font-size:1.6rem;
+  color:#fff;
+}
+.auth-confirm-card p{
+  color:var(--muted);
+  line-height:1.55;
+  margin:0 0 1.25rem;
 }

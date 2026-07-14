@@ -1,7 +1,5 @@
--- Public batch seat status for the marketing site.
--- Counts filled seats from confirmed payments only.
--- Pending proofs do not fill seats until admin approves.
--- Rejected / refunded payments do not count.
+-- Only confirmed payments fill seats.
+-- Pending proofs reserve nothing until admin approves.
 
 create or replace function public.get_public_batch_seats()
 returns jsonb
@@ -56,4 +54,6 @@ $$;
 grant execute on function public.get_public_batch_seats() to anon, authenticated;
 
 comment on function public.get_public_batch_seats() is
-  'Public seat occupancy for Batch 1/2 based on confirmed payments only.';
+  'Public seat occupancy for Batch 1/2 based on confirmed payments only. Pending proofs do not fill seats.';
+
+notify pgrst, 'reload schema';

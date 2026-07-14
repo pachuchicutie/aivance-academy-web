@@ -27,7 +27,7 @@ export const BATCHES: Record<BatchId, BatchInfo> = {
   "1": {
     id: "1",
     name: "Batch 1",
-    dates: "July 17–18, 2026",
+    dates: "July 24–25, 2026",
     days: "Friday–Saturday",
     time: "9:00 AM – 2:00 PM",
     price: BOOTCAMP.amount,
@@ -38,7 +38,7 @@ export const BATCHES: Record<BatchId, BatchInfo> = {
   "2": {
     id: "2",
     name: "Batch 2",
-    dates: "July 24–25, 2026",
+    dates: "July 31 – August 1, 2026",
     days: "Friday–Saturday",
     time: "9:00 AM – 2:00 PM",
     price: BOOTCAMP.amount,

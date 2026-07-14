@@ -16,7 +16,12 @@ export default function FinalCta() {
           <a className="btn btn-primary" href="#schedule">
             Reserve Your Seat
           </a>
-          <a className="btn btn-ghost" href="mailto:hello@aivanzaacademy.com">
+          <a
+            className="btn btn-ghost"
+            href="https://www.facebook.com/aivanza.academy/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Message Us
           </a>
         </div>

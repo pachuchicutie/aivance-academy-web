@@ -139,18 +139,41 @@ export default function PaymentProofForm({ batch, selectedMethod }: Props) {
         method: "POST",
         body,
       });
-      const data = (await res.json()) as { error?: string; message?: string };
+      const data = (await res.json()) as {
+        error?: string;
+        message?: string;
+        full_name?: string;
+        email?: string;
+        reference_number?: string;
+      };
 
       if (!res.ok) {
-        setSubmitError(
-          data.error || "Unable to submit payment proof. Please try again."
-        );
+        const errorText =
+          data.error || "Unable to submit payment proof. Please try again.";
+        // Duplicate / already-used email — highlight the email field too
+        if (
+          res.status === 409 ||
+          (/email/i.test(errorText) &&
+            (/already/i.test(errorText) ||
+              /pending/i.test(errorText) ||
+              /account/i.test(errorText)))
+        ) {
+          setErrors((prev) => ({ ...prev, email: errorText }));
+        }
+        setSubmitError(errorText);
         return;
       }
 
-      setSuccessMessage(
+      const savedName = data.full_name?.trim() || fullName.trim();
+      const savedEmail = data.email?.trim() || email.trim();
+      const baseMessage =
         data.message ||
-          "Payment proof submitted. We’ll verify your payment manually. Once confirmed, we’ll email you a registration link to create your account."
+        "Payment proof submitted. We’ll verify your payment manually. Once confirmed, we’ll email you a registration link to create your account.";
+
+      setSuccessMessage(
+        `${baseMessage}\n\nSaved as: ${savedName} · ${savedEmail}${
+          data.reference_number ? ` · Ref ${data.reference_number}` : ""
+        }`
       );
       setFullName("");
       setEmail("");
@@ -175,7 +198,9 @@ export default function PaymentProofForm({ batch, selectedMethod }: Props) {
         <div className="pay-success">
           <span className="eyebrow">Submitted</span>
           <h2>Payment proof received</h2>
-          <p>{successMessage}</p>
+          {successMessage.split("\n\n").map((part, i) => (
+            <p key={i}>{part}</p>
+          ))}
           <ul className="pay-success-list">
             <li>
               Status: <b>Pending review</b> — not confirmed yet
@@ -251,7 +276,8 @@ export default function PaymentProofForm({ batch, selectedMethod }: Props) {
 
         <p className="pay-form-note">
           Use an email you can access — we&apos;ll send your registration link
-          there after payment is confirmed.
+          there after payment is confirmed. Each email can only have one active
+          payment proof (pending or confirmed).
         </p>
 
         <div className="pay-form-grid">

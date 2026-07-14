@@ -2,11 +2,14 @@ import HeroParticles from "./HeroParticles";
 import HeroVideo from "./HeroVideo";
 import SeatMeter from "./SeatMeter";
 import { IconCalendar, IconUsers } from "./Icons";
+import { BATCHES } from "@/lib/batches";
 import { formatSeatLine, getBatchSeatStatus } from "@/lib/seats";
 
 export default async function Hero() {
   const seats = await getBatchSeatStatus();
   const batch1 = seats.batches["1"];
+  const b1 = BATCHES["1"];
+  const b2 = BATCHES["2"];
 
   return (
     <section className="hero" id="home">
@@ -74,15 +77,19 @@ export default async function Hero() {
             <div className="qi-row">
               <IconCalendar />
               <span>
-                <b>Batch 1:</b> July 17–18, 2026{" "}
-                <span className="mono">· Fri–Sat · 9:00 AM – 2:00 PM</span>
+                <b>{b1.name}:</b> {b1.dates}{" "}
+                <span className="mono">
+                  · {b1.days.replace("Friday–Saturday", "Fri–Sat")} · {b1.time}
+                </span>
               </span>
             </div>
             <div className="qi-row">
               <IconCalendar />
               <span>
-                <b>Batch 2:</b> July 24–25, 2026{" "}
-                <span className="mono">· Fri–Sat · 9:00 AM – 2:00 PM</span>
+                <b>{b2.name}:</b> {b2.dates}{" "}
+                <span className="mono">
+                  · {b2.days.replace("Friday–Saturday", "Fri–Sat")} · {b2.time}
+                </span>
               </span>
             </div>
             <div className="qi-row">

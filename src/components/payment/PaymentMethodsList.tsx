@@ -131,7 +131,12 @@ export default function PaymentMethodsList({
           >
             Try again
           </button>
-          <a className="btn btn-ghost" href="mailto:hello@aivanzaacademy.com">
+          <a
+            className="btn btn-ghost"
+            href="https://www.facebook.com/aivanza.academy/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Message Us
           </a>
         </div>
@@ -147,7 +152,12 @@ export default function PaymentMethodsList({
           we&apos;ll help you reserve a seat.
         </p>
         <div className="pay-state-actions">
-          <a className="btn btn-primary" href="mailto:hello@aivanzaacademy.com">
+          <a
+            className="btn btn-primary"
+            href="https://www.facebook.com/aivanza.academy/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Message Us
           </a>
           <button
