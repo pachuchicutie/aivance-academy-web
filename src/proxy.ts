@@ -38,8 +38,10 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const path = request.nextUrl.pathname;
-  const isLoginRoute = path === "/portal/login";
-  const isPortalPage = path.startsWith("/portal") && !isLoginRoute;
+  // Public auth pages (login + forgot password) stay reachable while signed out.
+  const isAuthPublicRoute =
+    path === "/portal/login" || path.startsWith("/portal/login/");
+  const isPortalPage = path.startsWith("/portal") && !isAuthPublicRoute;
 
   const withSessionCookies = (redirect: NextResponse) => {
     for (const cookie of response.cookies.getAll()) {
@@ -55,7 +57,7 @@ export async function proxy(request: NextRequest) {
     return withSessionCookies(NextResponse.redirect(redirectUrl));
   }
 
-  if (user && isLoginRoute) {
+  if (user && isAuthPublicRoute) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/portal";
     redirectUrl.search = "";

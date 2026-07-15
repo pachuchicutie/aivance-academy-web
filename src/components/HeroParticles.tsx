@@ -86,12 +86,7 @@ export default function HeroParticles() {
     <canvas
       ref={canvasRef}
       id="particles"
-      style={{
-        position: "absolute",
-        inset: 0,
-        zIndex: -1,
-        pointerEvents: "none",
-      }}
+      className="hero-particles"
       aria-hidden="true"
     />
   );

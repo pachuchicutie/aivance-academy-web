@@ -35,12 +35,10 @@ export function AuthConfirmClient({
   const safeNext =
     nextPath && nextPath.startsWith("/portal") ? nextPath : "/portal";
 
-  // Email-change / recovery confirmation should not force password setup.
+  // Email-change confirmation should not force password setup.
+  // Recovery and invite/setup links must collect a new password.
   const needsPassword =
-    requirePassword &&
-    type !== "email_change" &&
-    type !== "email" &&
-    type !== "recovery";
+    requirePassword && type !== "email_change" && type !== "email";
 
   useEffect(() => {
     let cancelled = false;
@@ -117,11 +115,13 @@ export function AuthConfirmClient({
           return;
         }
 
-        // Always collect password for account-setup links (invite + magiclink resends).
+        // Collect password for account-setup and password-recovery links.
         if (needsPassword) {
           setPhase("set-password");
           setMessage(
-            "Invite confirmed. Create a password to finish setting up your account."
+            otpType === "recovery"
+              ? "Reset confirmed. Choose a new password for your student account."
+              : "Invite confirmed. Create a password to finish setting up your account."
           );
           return;
         }
@@ -210,12 +210,14 @@ export function AuthConfirmClient({
 
   const title =
     phase === "working"
-      ? "Confirming invite…"
+      ? "Confirming your link…"
       : phase === "set-password"
-        ? "Create your password"
+        ? type === "recovery"
+          ? "Set a new password"
+          : "Create your password"
         : phase === "ok"
           ? "Account ready"
-          : "Invite problem";
+          : "Link problem";
 
   return (
     <main className="auth-confirm-page">

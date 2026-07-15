@@ -18,7 +18,10 @@ export default async function Hero() {
         className="circuit"
         viewBox="0 0 1200 800"
         preserveAspectRatio="xMidYMid slice"
+        width="100%"
+        height="100%"
         aria-hidden="true"
+        focusable="false"
       >
         <g stroke="rgba(90,160,255,.12)" strokeWidth="1" fill="none">
           <path d="M0 120 H240 l40 40 H520" />
@@ -40,7 +43,7 @@ export default async function Hero() {
       <HeroParticles />
 
       <div className="wrap hero-grid">
-        <div>
+        <div className="hero-copy">
           <span className="badge">2-Day AI Specialist Starter Bootcamp</span>
           <h1>
             Advance Your Future with <em>Practical AI Skills</em>
@@ -59,10 +62,17 @@ export default async function Hero() {
               View Curriculum
             </a>
           </div>
-          <p className="trust-line">
-            <b>Beginner-Friendly</b> &nbsp;•&nbsp; <b>Practical Outputs</b>{" "}
-            &nbsp;•&nbsp; <b>Business &amp; Career Ready</b>
-          </p>
+          <ul className="trust-line" aria-label="Bootcamp highlights">
+            <li>
+              <b>Beginner-Friendly</b>
+            </li>
+            <li>
+              <b>Practical Outputs</b>
+            </li>
+            <li>
+              <b>Business &amp; Career Ready</b>
+            </li>
+          </ul>
         </div>
 
         <div className="hero-visual">

@@ -18,20 +18,22 @@ export const revalidate = 30;
 export default function Home() {
   return (
     <RedirectIfAuthed>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Challenge />
-        <Learn />
-        <Schedule />
-        <Skills />
-        <WhoFor />
-        <Output />
-        <Pricing />
-        <FinalCta />
-      </main>
-      <Footer />
+      <div className="landing-page">
+        <Header />
+        <main className="landing-main">
+          <Hero />
+          <About />
+          <Challenge />
+          <Learn />
+          <Schedule />
+          <Skills />
+          <WhoFor />
+          <Output />
+          <Pricing />
+          <FinalCta />
+        </main>
+        <Footer />
+      </div>
     </RedirectIfAuthed>
   );
 }
