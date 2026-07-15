@@ -29,7 +29,7 @@ export default function HowToPay() {
         <h2 id="how-to-pay-heading">How to pay</h2>
         <p>
           Payments are reviewed by our team. Course access unlocks only after
-          confirmation — never automatically from this page.
+          confirmation, never automatically from this page.
         </p>
       </div>
       <ol className="pay-steps-grid">

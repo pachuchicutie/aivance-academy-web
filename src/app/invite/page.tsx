@@ -13,5 +13,12 @@ export default async function InvitePage({
     : params.token_hash;
   const type = Array.isArray(params.type) ? params.type[0] : params.type;
 
-  return <AuthConfirmClient tokenHash={token_hash} type={type} />;
+  // Always collect a password on invite links (including magic-link resends).
+  return (
+    <AuthConfirmClient
+      tokenHash={token_hash}
+      type={type || "invite"}
+      requirePassword
+    />
+  );
 }

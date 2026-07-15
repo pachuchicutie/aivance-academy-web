@@ -21,7 +21,7 @@ export default function Output() {
             <h2>Build Your First AI-Powered Business Workflow</h2>
             <p className="lead">
               By the end of Day 2, you&apos;ll leave with a complete set of
-              practical outputs — the starting system of your own AI-powered
+              practical outputs: the starting system of your own AI-powered
               workflow.
             </p>
           </div>

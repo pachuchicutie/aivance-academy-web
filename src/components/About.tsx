@@ -40,7 +40,7 @@ export default function About() {
             </div>
             <h3>Create Practical Outputs</h3>
             <p>
-              Walk away with real, usable outputs — not just notes. Every lesson
+              Walk away with real, usable outputs, not just notes. Every lesson
               builds toward something you keep.
             </p>
           </Reveal>
@@ -51,7 +51,7 @@ export default function About() {
             <h3>Apply AI to Real Life</h3>
             <p>
               Use AI for work, business, portfolio building, and everyday
-              productivity — starting day one.
+              productivity, starting day one.
             </p>
           </Reveal>
         </div>

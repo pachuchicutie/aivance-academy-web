@@ -5,14 +5,15 @@ import PaymentFooter from "@/components/payment/PaymentFooter";
 import PaymentPageClient from "@/components/payment/PaymentPageClient";
 import { BATCHES, getBatch, parseBatchId, paymentPath } from "@/lib/batches";
 import { fetchActivePaymentMethods } from "@/lib/payment-methods";
-import { formatSeatLine, getBatchSeatStatus } from "@/lib/seats";
+import { formatSeatLine } from "@/lib/seats";
+import { getBatchSeatStatus } from "@/lib/seats-server";
 import { IconCalendar, IconClock } from "@/components/Icons";
 import SeatMeter from "@/components/SeatMeter";
 
 export const metadata: Metadata = {
-  title: "Reserve Your Seat — Manual Payment | AIvanza Academy",
+  title: "Reserve Your Seat | Manual Payment | AIvanza Academy",
   description:
-    "Pay manually via bank transfer or e-wallet for the AIvanza Academy 2-Day AI Specialist Starter Bootcamp (Basic). Submit your payment proof for review — no account required.",
+    "Pay manually via bank transfer or e-wallet for the AIvanza Academy 2-Day AI Specialist Starter Bootcamp (Basic). Submit your payment proof for review. No account required.",
 };
 
 /** Keep payment page seat counts fresh. */

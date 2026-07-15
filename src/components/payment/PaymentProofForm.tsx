@@ -150,7 +150,7 @@ export default function PaymentProofForm({ batch, selectedMethod }: Props) {
       if (!res.ok) {
         const errorText =
           data.error || "Unable to submit payment proof. Please try again.";
-        // Duplicate / already-used email — highlight the email field too
+        // Duplicate / already-used email | highlight the email field too
         if (
           res.status === 409 ||
           (/email/i.test(errorText) &&
@@ -203,7 +203,7 @@ export default function PaymentProofForm({ batch, selectedMethod }: Props) {
           ))}
           <ul className="pay-success-list">
             <li>
-              Status: <b>Pending review</b> — not confirmed yet
+              Status: <b>Pending review</b> (not confirmed yet)
             </li>
             <li>
               Tier: <b>Basic</b> (granted only after confirmation + signup)
@@ -275,7 +275,7 @@ export default function PaymentProofForm({ batch, selectedMethod }: Props) {
         )}
 
         <p className="pay-form-note">
-          Use an email you can access — we&apos;ll send your registration link
+          Use an email you can access. We&apos;ll send your registration link
           there after payment is confirmed. Each email can only have one active
           payment proof (pending or confirmed).
         </p>

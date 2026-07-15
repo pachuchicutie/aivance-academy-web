@@ -12,6 +12,13 @@ export default async function AuthConfirmPage({
     ? params.token_hash[0]
     : params.token_hash;
   const type = Array.isArray(params.type) ? params.type[0] : params.type;
+  const next = Array.isArray(params.next) ? params.next[0] : params.next;
 
-  return <AuthConfirmClient tokenHash={token_hash} type={type} />;
+  return (
+    <AuthConfirmClient
+      tokenHash={token_hash}
+      type={type}
+      nextPath={typeof next === "string" ? next : undefined}
+    />
+  );
 }

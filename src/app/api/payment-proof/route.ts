@@ -237,7 +237,7 @@ export async function POST(request: Request) {
       message.includes("schema cache") ||
       message.includes("Could not find the function") ||
       message.includes("column")
-        ? " Database guest-payment migration may be missing — run supabase/migrations/202607140002_block_duplicate_guest_payment_email.sql in the Supabase SQL Editor."
+        ? " Database guest-payment migration may be missing. Run supabase/migrations/202607140002_block_duplicate_guest_payment_email.sql in the Supabase SQL Editor."
         : "";
 
     return NextResponse.json(

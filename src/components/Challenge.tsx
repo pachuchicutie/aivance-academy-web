@@ -8,7 +8,7 @@ export default function Challenge() {
         <Reveal className="section-head">
           <span className="eyebrow">The Challenge</span>
           <h2>
-            AI Is Moving Fast — But Most People Don’t Know Where to Start
+            AI Is Moving Fast, But Most People Don’t Know Where to Start
           </h2>
           <p>
             Many people want to use AI but feel overwhelmed by too many tools,

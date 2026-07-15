@@ -1,7 +1,11 @@
-import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { isSupabaseConfigured } from "@/lib/supabase/client";
 import type { BatchId } from "@/lib/batches";
 import { BOOTCAMP } from "@/lib/batches";
+
+/**
+ * Client-safe seat helpers and types.
+ * Server-only seat fetching lives in seats-server.ts so client components
+ * never pull in next/headers via the Supabase server client.
+ */
 
 export type SeatStats = {
   filled: number;
@@ -35,7 +39,7 @@ export function defaultBatchSeatStatus(): BatchSeatStatus {
   };
 }
 
-function normalizeStats(
+export function normalizeSeatStats(
   raw: { filled?: number; remaining?: number; percent?: number } | null | undefined,
   seatLimit: number
 ): SeatStats {
@@ -52,43 +56,6 @@ function normalizeStats(
         : 0;
 
   return { filled, remaining, percent, seatLimit };
-}
-
-export async function getBatchSeatStatus(): Promise<BatchSeatStatus> {
-  const fallback = defaultBatchSeatStatus();
-
-  if (!isSupabaseConfigured()) {
-    return fallback;
-  }
-
-  try {
-    const supabase = createSupabaseServerClient();
-    const { data, error } = await supabase.rpc("get_public_batch_seats");
-
-    if (error || !data) {
-      console.error("get_public_batch_seats failed:", error?.message);
-      return fallback;
-    }
-
-    const payload = data as {
-      seat_limit?: number;
-      batches?: Record<string, { filled?: number; remaining?: number; percent?: number }>;
-    };
-
-    const seatLimit = Number(payload.seat_limit) || BOOTCAMP.seatLimit;
-    const batches = payload.batches ?? {};
-
-    return {
-      seatLimit,
-      batches: {
-        "1": normalizeStats(batches["1"], seatLimit),
-        "2": normalizeStats(batches["2"], seatLimit),
-      },
-    };
-  } catch (err) {
-    console.error("getBatchSeatStatus error:", err);
-    return fallback;
-  }
 }
 
 export function seatStatusLabel(stats: SeatStats): string {

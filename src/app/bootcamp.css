@@ -1366,20 +1366,114 @@ footer{
   background:radial-gradient(circle at top, rgba(24,216,255,.08), transparent 40%), #05070f;
 }
 .auth-confirm-card{
-  width:min(480px,100%);
+  width:min(440px,100%);
   border:1px solid rgba(120,160,255,.16);
   border-radius:16px;
   background:rgba(8,14,28,.92);
   padding:2rem 1.5rem;
   text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 .auth-confirm-card h1{
   margin:0.75rem 0 0.75rem;
-  font-size:1.6rem;
+  font-size:1.55rem;
   color:#fff;
+  width:100%;
 }
-.auth-confirm-card p{
+.auth-confirm-message{
   color:var(--muted);
   line-height:1.55;
-  margin:0 0 1.25rem;
+  margin:0 0 0.75rem;
+  width:100%;
+  max-width:34ch;
+}
+.auth-confirm-email{
+  margin:0 0 1.25rem !important;
+  color:var(--muted);
+  font-size:0.88rem;
+  width:100%;
+}
+.auth-confirm-email strong{
+  color:#fff;
+  font-weight:600;
+}
+.auth-confirm-actions{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  gap:0.75rem;
+  width:100%;
+  margin-top:0.25rem;
+}
+.auth-confirm-actions .auth-confirm-btn{
+  width:100%;
+  max-width:none;
+}
+.auth-confirm-btn{
+  display:flex;
+  width:100%;
+  max-width:none;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  box-sizing:border-box;
+}
+.auth-password-form{
+  display:grid;
+  gap:0.9rem;
+  width:100%;
+  max-width:100%;
+  margin:0.75rem auto 0;
+  text-align:left;
+}
+.auth-password-form .auth-confirm-btn{
+  width:100%;
+  margin-top:0.25rem;
+  padding:.9rem 1.2rem;
+}
+.auth-field{
+  display:grid;
+  gap:0.35rem;
+  width:100%;
+}
+.auth-field span{
+  font-size:0.78rem;
+  font-weight:700;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.auth-field input{
+  width:100%;
+  border:1px solid rgba(120,160,255,.22);
+  border-radius:10px;
+  background:rgba(4,10,22,.85);
+  color:#fff;
+  padding:0.75rem 0.9rem;
+  font:inherit;
+}
+.auth-field input:focus{
+  outline:2px solid var(--glow);
+  outline-offset:1px;
+}
+.auth-form-error{
+  margin:0 !important;
+  color:#ff9b94 !important;
+  font-size:0.86rem;
+  text-align:center;
+}
+.auth-confirm-spinner{
+  width:28px;
+  height:28px;
+  margin-top:0.5rem;
+  border:2px solid rgba(120,160,255,.2);
+  border-top-color:var(--glow);
+  border-radius:50%;
+  animation:auth-spin 0.7s linear infinite;
+}
+@keyframes auth-spin{
+  to{transform:rotate(360deg)}
 }

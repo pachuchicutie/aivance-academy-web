@@ -2,11 +2,8 @@ import Reveal from "./Reveal";
 import SeatMeter from "./SeatMeter";
 import { IconCalendar, IconClock, IconInfo } from "./Icons";
 import { BATCHES, paymentPath, type BatchId } from "@/lib/batches";
-import {
-  formatSeatLine,
-  getBatchSeatStatus,
-  type SeatStats,
-} from "@/lib/seats";
+import { formatSeatLine, type SeatStats } from "@/lib/seats";
+import { getBatchSeatStatus } from "@/lib/seats-server";
 
 function statusForBatch(id: BatchId, stats: SeatStats, otherFilled: number, limit: number) {
   if (stats.filled >= stats.seatLimit) {

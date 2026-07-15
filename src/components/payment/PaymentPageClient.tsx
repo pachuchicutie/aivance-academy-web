@@ -37,7 +37,7 @@ export default function PaymentPageClient({
           <span className="badge">Manual seat reservation · Basic</span>
           <h1>
             Reserve {batch.name}
-            <em> — pay via bank or e-wallet</em>
+            <em> (pay via bank or e-wallet)</em>
           </h1>
           <p className="pay-hero-sub">
             Send ₱1,999 using one of our payment channels, then submit your

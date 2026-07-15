@@ -3,7 +3,8 @@ import HeroVideo from "./HeroVideo";
 import SeatMeter from "./SeatMeter";
 import { IconCalendar, IconUsers } from "./Icons";
 import { BATCHES } from "@/lib/batches";
-import { formatSeatLine, getBatchSeatStatus } from "@/lib/seats";
+import { formatSeatLine } from "@/lib/seats";
+import { getBatchSeatStatus } from "@/lib/seats-server";
 
 export default async function Hero() {
   const seats = await getBatchSeatStatus();
