@@ -232,9 +232,14 @@ function ForgotPasswordForm() {
           <ArrowLeft size={15} aria-hidden="true" />
           Back to sign in
         </Link>
-        <Link href="/#contact" className="pt-login-help">
+        <a
+          href="https://www.facebook.com/aivanza.academy/"
+          className="pt-login-help"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Having trouble? Contact support
-        </Link>
+        </a>
       </div>
     </section>
   );
